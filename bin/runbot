@@ -5,6 +5,7 @@
 
 "write your own commands"
 
+
 import os
 import readline
 import sys
@@ -22,11 +23,11 @@ from mod import bsc, dbg, log, tdo, irc, rss
 
 Config.nick = "runbot"
 Config.channel = "#runbot"
-Config.realname = "program your own commands"
+Config.realname = "write your own commands"
 Config.username = "runbot"
 
 
-Wd.workdir = os.path.expanduser("~/.runbot")
+Wd.workdir = os.path.expanduser("~/.run")
 
 
 scan(bsc)
@@ -90,14 +91,18 @@ def wrap(func):
 
 def main():
     cfg = parse(' '.join(sys.argv[1:]))
-    bot = IRC()
-    bot.start()
-    banner(bot, cfg)
-    fetcher = Fetcher()
-    fetcher.start()
-    csl = Console()
-    csl.start()
-    csl.forever()
+    if cfg.txt:
+        cli = CLI()
+        docmd(cli, cfg.otxt)
+    elif "c" in cfg.opts:
+        bot = IRC()
+        bot.start()
+        banner(bot, cfg)
+        fetcher = Fetcher()
+        fetcher.start()
+        csl = Console()
+        csl.start()
+        csl.forever()
 
 
 wrap(main)

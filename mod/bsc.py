@@ -8,8 +8,7 @@ import time
 from op.utl import elapsed
 
 
-from hdl import Commands
-from run import starttime
+from run import Commands, starttime
 
 
 def cmd(event):

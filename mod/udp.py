@@ -9,8 +9,8 @@ import socket
 import time
 
 
-from opbot.obj import Class, Object, last
-from opbot.hdl import Bus, launch
+from op import Class, Object, last
+from run import Bus, launch
 
 
 def init():

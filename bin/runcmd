@@ -6,6 +6,7 @@
 "operator bot"
 
 
+import importlib
 import os
 import readline
 import sys
@@ -14,17 +15,14 @@ import time
 
 
 from op import Wd, format, keys
-
-
 from run import Client, Event, docmd, parse, scan, scandir
 
 
 Wd.workdir = os.path.expanduser("~/.runbot")
 
 
-def importer(pakgname, modname):
-    mod = __import__("%s.%s" % (pkgname, modname))
-    print(mod)
+def importer(pkgname, modname):
+    mod = importlib.import_module("%s.%s" % (pkgname, modname))
     scan(mod)
 
 
@@ -37,7 +35,6 @@ class CLI(Client):
 
 def main():
     cfg = parse(' '.join(sys.argv[1:]))
-    print(cfg)
     scandir("mod", importer)
     cli = CLI()
     docmd(cli, cfg.otxt)

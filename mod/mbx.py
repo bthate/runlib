@@ -10,8 +10,12 @@ import os
 import time
 
 
-from opbot.obj import Class, Db, elapsed, find, fntime
-from opbot.obj import Object, printable, save, update
+from op import Object, format, save, update
+
+
+from op.dbs import Class, Db, find, fntime
+from op.utl import elapsed
+
 
 
 bdmonths = [
@@ -107,7 +111,7 @@ def cor(event):
             txt = "From,Subject"
         event.reply("%s %s %s" % (
                                   _nr,
-                                  printable(email, txt, plain=True),
+                                  format(email, txt, plain=True),
                                   elapsed(time.time() - fntime(email.__stp__)))
                                  )
 
@@ -123,7 +127,7 @@ def eml(event):
             _nr += 1
             event.reply("%s %s %s" % (
                                       _nr,
-                                      printable(obj, "From,Subject"),
+                                      format(obj, "From,Subject"),
                                       elapsed(time.time() - fntime(_fn)))
                                      )
 

@@ -12,8 +12,8 @@ import time
 from op import Object, get, name, update
 from op.utl import elapsed
 
-from hdl import Bus
-from run import starttime
+
+from run import Bus, starttime
 
 
 def __dir__():
@@ -24,7 +24,6 @@ def __dir__():
 
 
 def flt(event):
-    "show bots registered on the bus."
     try:
         index = int(event.args[0])
         event.reply(Bus.objs[index])
@@ -35,7 +34,6 @@ def flt(event):
 
 
 def thr(event):
-    "show running threads."
     result = []
     for thread in sorted(threading.enumerate(), key=lambda x: x.getName()):
         if str(thread).startswith("<_"):

@@ -18,9 +18,8 @@ from op import Default, Object, edit, get, register, save, update
 from op.dbs import Class, Db, find, last, fntime
 from op.utl import elapsed, spl
 
-from hdl import Bus, launch
-from run import Cfg, Repeater
-
+from run import Bus, Cfg, launch
+from run.tmr import Repeater
 
 def __dir__():
     return (

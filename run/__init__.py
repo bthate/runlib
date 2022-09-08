@@ -4,8 +4,12 @@
 "handle"
 
 
+import time
+
+
 from .bus import Bus
 from .cbs import Callbacks
+from .cfg import Config
 from .clt import Client
 from .com import Commands
 from .evt import Event, docmd
@@ -13,6 +17,12 @@ from .hdl import Handler
 from .prs import parse
 from .scn import scan, scandir
 from .thr import Thread, launch
+
+
+starttime = time.time()
+
+
+Cfg = Config()
 
 
 def __dir__():
@@ -29,5 +39,6 @@ def __dir__():
             'launch',
             'parse',
             'scan',
-            'scandir'
+            'scandir',
+            'starttime'
            )

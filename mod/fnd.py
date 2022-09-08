@@ -5,7 +5,9 @@
 import time
 
 
-from opbot.obj import Wd, elapsed, find, format, fntime, keys
+from op import Wd, format, keys
+from op.dbs import find, fntime
+from op.utl import elapsed
 
 
 def fnd(event):

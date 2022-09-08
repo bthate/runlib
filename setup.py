@@ -9,15 +9,15 @@ def read():
 
 
 setup(
-    name="oplib",
-    version="222",
-    url="https://github.com/bthate/oplib",
+    name="runlib",
+    version="100",
+    url="https://github.com/bthate/runlib",
     author="Bart Thate",
     author_email="bthate67@gmail.com",
-    description="object programming library",
+    description="python3 runtime library",
     long_description=read(),
     license="Public Domain",
-    packages=["op", "op.hdl", "op.mod", "op.obj", "op.run"],
+    packages=["run"],
     zip_safe=False,
     classifiers=[
         "Development Status :: 4 - Beta",

@@ -14,6 +14,9 @@ import termios
 import time
 
 
+sys.path.insert(0, os.getcwd())
+
+
 from op import Wd, format, keys
 from run import Client, Event, docmd, parse, scan, scandir
 

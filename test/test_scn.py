@@ -7,15 +7,12 @@
 import unittest
 
 
-from gcid.scan import scan
-from gcid.table import Commands
-
-
-from gcid import irc
+from run import Commands, scan
+from mod import bsc
 
 
 class TestScan(unittest.TestCase):
 
     def test_composite(self):
-        scan(irc)
-        self.assertTrue("cfg" in Commands.cmds)
+        scan(bsc)
+        self.assertTrue("cmd" in Commands.cmds)

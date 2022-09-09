@@ -17,6 +17,7 @@ from .hdl import Handler
 from .prs import parse
 from .scn import scan, scandir
 from .thr import Thread, launch
+from .tmr import Timer, Repeater
 
 
 starttime = time.time()
@@ -34,7 +35,9 @@ def __dir__():
             'Config',
             'Event',
             'Handler',
+            'Repeater',
             'Thread',
+            'Timer',
             'dispatch',
             'launch',
             'parse',

@@ -7,11 +7,8 @@
 import unittest
 
 
-from gcid.client import Client
-from gcid.event import Event
-from gcid.object import Object, get
-from gcid.run import Cfg
-from gcid.table import Commands
+from op import Object, get
+from run import Cfg, Client, Commands, Event
 
 
 events = []
@@ -19,8 +16,8 @@ skip = ["cfg",]
 
 param = Object()
 param.cmd = [""]
-param.cfg = ["nick=gcid", "server=localhost", "port=6699"]
-param.fnd = ["log", "log txt==test", "config", "config name=gcid", "config server==localhost"]
+param.cfg = ["nick=bot", "server=localhost", "port=6699"]
+param.fnd = ["log", "log txt==test", "config", "config name=bot", "config server==localhost"]
 param.flt = ["0", ""]
 param.log = ["test1", "test2"]
 param.mre = [""]
@@ -62,7 +59,7 @@ class TestCommands(unittest.TestCase):
                 continue
             for ex in get(param, cmd, ""):
                 evt = Event()
-                evt.channel = "#gcid"
+                evt.channel = "#bot"
                 evt.orig = repr(cli)
                 txt = cmd + " " + ex
                 evt.txt = txt.strip()

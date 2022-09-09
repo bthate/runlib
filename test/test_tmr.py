@@ -8,7 +8,7 @@
 import unittest
 
 
-from gcid.timer import Timer
+from run import Timer
 
 
 def test():

@@ -8,10 +8,10 @@
 import unittest
 
 
-from gcid.thread import Thread
+from run import Thread
 
 
-def test(event):
+def test():
     pass
 
 

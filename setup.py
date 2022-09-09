@@ -10,11 +10,11 @@ def read():
 
 setup(
     name="runlib",
-    version="100",
+    version="101",
     url="https://github.com/bthate/runlib",
     author="Bart Thate",
     author_email="bthate67@gmail.com",
-    description="python3 runtime library",
+    description="The Python3 ``run`` Package",
     long_description=read(),
     license="Public Domain",
     packages=["run"],

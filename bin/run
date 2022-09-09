@@ -17,16 +17,16 @@ import time
 sys.path.insert(0, os.getcwd())
 
 
-from op import Wd, format, keys
-from run import Client, Event, docmd, parse, scan, scandir
+import threading
+import time
+
+
+from op import Wd, elapsed, find, format, fntime, get, name, keys, update
+from run import Bus, Client, Commands, Event
+from run import docmd, parse, scan, scandir, starttime
 
 
 Wd.workdir = os.path.expanduser("~/.run")
-
-
-def importer(pkgname, modname):
-    mod = importlib.import_module("%s.%s" % (pkgname, modname))
-    scan(mod)
 
 
 class CLI(Client):
@@ -36,9 +36,81 @@ class CLI(Client):
         print(txt)
 
 
+
+def cmd(event):
+    event.reply(",".join(sorted(Commands.cmds)))
+
+
+def upt(event):
+    event.reply(elapsed(time.time()-starttime))
+
+
+def flt(event):
+    "show bots registered on the bus."
+    try:
+        index = int(event.args[0])
+        event.reply(Bus.objs[index])
+        return
+    except (KeyError, TypeError, IndexError, ValueError):
+        pass
+    event.reply(" | ".join([name(o) for o in Bus.objs]))
+
+
+def thr(event):
+    result = []
+    for thread in sorted(threading.enumerate(), key=lambda x: x.getName()):
+        if str(thread).startswith("<_"):
+            continue
+        obj = Object()
+        update(obj, vars(thread))
+        if get(obj, "sleep", None):
+            uptime = obj.sleep - int(time.time() - obj.state.latest)
+        else:
+            uptime = int(time.time() - starttime)
+        result.append((uptime, thread.getName()))
+    res = []
+    for uptime, txt in sorted(result, key=lambda x: x[0]):
+        res.append("%s/%s" % (txt, elapsed(uptime)))
+    if res:
+        event.reply(" ".join(res))
+    else:
+        event.reply("no threads running")
+
+
+
+def fnd(event):
+    if not event.args:
+        res = ",".join(sorted([x.split(".")[-1].lower() for x in Wd.types()]))
+        if res:
+            event.reply(res)
+        else:
+            event.reply("no types yet.")
+        return
+    bot = event.bot()
+    otype = event.args[0]
+    res = list(find(otype, event.gets))
+    if bot.cache:
+        if len(res) > 3:
+            bot.extend(event.channel, [x[1].txt for x in res])
+            bot.say(event.channel, "%s left in cache, use !mre to show more" % bot.cache.size())
+            return
+    _nr = 0
+    for _fn, obj in res:
+        txt = "%s %s %s" % (
+                            str(_nr),
+                            format(obj, event.sets.keys or keys(obj), event.toskip),
+                            elapsed(time.time()-fntime(_fn))
+                           )
+        _nr += 1
+        event.reply(txt)
+    if not _nr:
+        event.reply("no result")
+
+
 def main():
     cfg = parse(' '.join(sys.argv[1:]))
-    scandir("mod", importer)
+    mod = __import__("__main__")
+    scan(mod)
     cli = CLI()
     docmd(cli, cfg.otxt)
 

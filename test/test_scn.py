@@ -8,7 +8,9 @@ import unittest
 
 
 from run import Commands, scan
-from mod import bsc
+
+
+import bsc
 
 
 class TestScan(unittest.TestCase):

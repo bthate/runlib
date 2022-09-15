@@ -5,7 +5,7 @@
 "list of Objects. Object should provides sa say(channel, txt)."
 
 
-from op import Object
+from opl import Object
 
 
 class Bus():

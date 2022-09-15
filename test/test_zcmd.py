@@ -7,7 +7,7 @@
 import unittest
 
 
-from op import Object, get
+from opl import Object, get
 from run import Cfg, Client, Commands, Event
 
 

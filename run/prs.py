@@ -5,7 +5,7 @@
 "parse"
 
 
-from op import Default, register
+from opl import Default, register
 
 
 class Parsed(Default):

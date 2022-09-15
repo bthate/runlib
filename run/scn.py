@@ -6,10 +6,10 @@ import inspect
 import os
 
 
-from op import Class
+from opl import Class
 
 
-from .com import Commands
+from run.com import Commands
 
 
 def scan(mod):

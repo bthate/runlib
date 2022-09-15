@@ -5,10 +5,10 @@
 import threading
 
 
-from op import Default, Object, update
+from opl import Default, Object, update
 
-from .bus import Bus
-from .prs import parse
+from run.bus import Bus
+from run.prs import parse
 
 
 class Event(Default):

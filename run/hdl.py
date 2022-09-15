@@ -10,13 +10,13 @@ import threading
 import time
 
 
-from op import Object
+from opl import Object
 
 
-from .bus import Bus
-from .cbs import Callbacks
-from .evt import Event
-from .thr import launch
+from run.bus import Bus
+from run.cbs import Callbacks
+from run.evt import Event
+from run.thr import launch
 
 
 class Handler(Object):

@@ -3,8 +3,8 @@
 
 
 
-from .com import dispatch
-from .hdl import Handler
+from run.com import dispatch
+from run.hdl import Handler
 
 
 class Client(Handler):

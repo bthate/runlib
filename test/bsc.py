@@ -5,7 +5,7 @@
 import time
 
 
-from op.utl import elapsed
+from opl import elapsed
 from run import Commands, starttime
 
 

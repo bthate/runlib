@@ -16,6 +16,7 @@ setup(
     author_email="bthate67@gmail.com",
     description="The Python3 ``run`` Package",
     long_description=read(),
+    long_description_content_type=`text/x-rst`,
     license="Public Domain",
     packages=["run"],
     zip_safe=False,

@@ -15,7 +15,7 @@ def popen(txt):
 
 
 popen("rm -fR build dist MANIFEST *~ .run runlib.egg-info")
-popen("rm -fR op/*~ op/__pycache__")
+popen("rm -fR opl/*~ opl/__pycache__")
 popen("rm -fR run/*~ run/__pycache__")
 popen("rm -fR mod/*~ mod/__pycache__")
 popen("rm -fR bin/*~ bin/__pycache__")

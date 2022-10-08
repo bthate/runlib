@@ -10,7 +10,7 @@ def read():
 
 setup(
     name="runlib",
-    version="101",
+    version="102",
     url="https://github.com/bthate/runlib",
     author="Bart Thate",
     author_email="bthate67@gmail.com",
